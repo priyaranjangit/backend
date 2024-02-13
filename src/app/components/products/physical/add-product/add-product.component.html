@@ -1,0 +1,271 @@
+Add Product
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-header">
+                    <h5> Add Product </h5>
+                </div>
+                <div class="card-body">
+                    <div class="row product-adding">
+                        <div class="col-xl-5">
+                            <div class="add-product">
+                                <div class="row">
+                                    <div class="col-xl-9 xl-50 col-sm-6 col-9">
+                                        <img alt="Product Image" [src]="bigImage" class="img-fluid image_zoom_1">
+                                    </div>
+                                    <div class="col-xl-3 xl-50 col-sm-6 col-3">
+                                        <ul class="file-upload-product">
+                                            <li *ngFor="let item of url;let i=index">
+                                                <div class="box-input-file">
+                                                    <input class="upload" type="file" #file (change)="upload(file.files,i)" />
+                                                    <img class="imgUpload" [src]="item.img" />
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-7">
+                            <form [formGroup]="addForm" (ngSubmit)="Submit()">
+                                <div class="add-product-form">
+                                    <div class="form-group row">
+                                        <label for="validationCustom0"
+                                            class="col-xl-3 col-md-4"><span>*</span>Name</label>
+                                        <input class="form-control col-xl-8 col-md-7" type="text" formControlName="name"
+                                            [ngClass]="{'is-invalid' : submitted  && f.name.errors }">
+                                        <div class="col-xl-3 col-md-4"></div>
+                                        <div class="col-xl-3 col-md-4 invalid-feedback"
+                                            *ngIf="submitted  && f.name.errors">
+                                            <div class="text-danger" *ngIf="f.name.errors.required">
+                                                {{validationMessages.name}}
+                                            </div>
+                                            <div class="text-danger" *ngIf="formErrors.name">
+                                                {{formErrors.name}}
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label for="validationCustom0"
+                                            class="col-xl-3 col-md-4"><span>*</span>Title</label>
+                                        <input class="form-control col-xl-8 col-md-7" type="text"
+                                            formControlName="title"
+                                            [ngClass]="{'is-invalid' : submitted  && f.title.errors }">
+                                        <div class="col-xl-3 col-md-4"></div>
+                                        <div class="col-xl-3 col-md-4 invalid-feedback"
+                                            *ngIf="submitted  && f.title.errors">
+                                            <div class="text-danger" *ngIf="f.title.errors.required">
+                                                {{validationMessages.title}}
+                                            </div>
+                                            <div class="text-danger" *ngIf="formErrors.title">
+                                                {{formErrors.title}}
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label for="validationCustom0"
+                                            class="col-xl-3 col-md-4"><span>*</span>Code</label>
+                                        <input class="form-control col-xl-8 col-md-7" type="text" formControlName="code"
+                                            [ngClass]="{'is-invalid' : submitted  && f.code.errors }">
+                                        <div class="col-xl-3 col-md-4"></div>
+                                        <div class="col-xl-3 col-md-4 invalid-feedback"
+                                            *ngIf="submitted  && f.code.errors">
+                                            <div class="text-danger" *ngIf="f.code.errors.required">
+                                                {{validationMessages.code}}
+                                            </div>
+                                            <div class="text-danger" *ngIf="formErrors.code">
+                                                {{formErrors.code}}
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label for="validationCustom0"
+                                            class="col-xl-3 col-md-4"><span>*</span>Price</label>
+                                        <input class="form-control col-xl-8 col-md-7" type="text"
+                                            formControlName="price"
+                                            [ngClass]="{'is-invalid' : submitted  && f.price.errors }">
+                                        <div class="col-xl-3 col-md-4"></div>
+                                        <div class="col-xl-3 col-md-4 invalid-feedback"
+                                            *ngIf="submitted  && f.price.errors">
+                                            <div class="text-danger" *ngIf="f.price.errors.required">
+                                                {{validationMessages.price}}
+                                            </div>
+                                            <div class="text-danger" *ngIf="formErrors.price">
+                                                {{formErrors.price}}
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label for="validationCustom0" class="col-xl-3 col-md-4"><span>*</span>Sale
+                                            Price</label>
+                                        <input class="form-control col-xl-8 col-md-7" type="text"
+                                            formControlName="salePrice"
+                                            [ngClass]="{'is-invalid' : submitted  && f.salePrice.errors }">
+                                        <div class="col-xl-3 col-md-4"></div>
+                                        <div class="col-xl-3 col-md-4 invalid-feedback"
+                                            *ngIf="submitted  && f.salePrice.errors">
+                                            <div class="text-danger" *ngIf="f.salePrice.errors.required">
+                                                {{validationMessages.salePrice}}
+                                            </div>
+                                            <div class="text-danger" *ngIf="formErrors.salePrice">
+                                                {{formErrors.salePrice}}
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label for="validationCustom0"
+                                            class="col-xl-3 col-md-4"><span>*</span>Discount</label>
+                                        <input class="form-control col-xl-8 col-md-7" type="text"
+                                            formControlName="discount"
+                                            [ngClass]="{'is-invalid' : submitted  && f.discount.errors }">
+                                        <div class="col-xl-3 col-md-4"></div>
+                                        <div class="col-xl-3 col-md-4 invalid-feedback"
+                                            *ngIf="submitted  && f.discount.errors">
+                                            <div class="text-danger" *ngIf="f.discount.errors.required">
+                                                {{validationMessages.discount}}
+                                            </div>
+                                            <div class="text-danger" *ngIf="formErrors.discount">
+                                                {{formErrors.discount}}
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label for="validationCustom0"
+                                            class="col-xl-3 col-md-4"><span>*</span>Size</label>
+                                        <select class="form-control col-xl-8 col-md-7" formControlName="sizeId"
+                                            [ngClass]="{'is-invalid' : submitted  && f.sizeId.errors }">
+                                            <option value="">--Select--</option>
+                                            <option *ngFor="let size of objSizes" [value]="size.id">{{size.name}}
+                                            </option>
+                                        </select>
+                                        <div class="col-xl-3 col-md-4"></div>
+                                        <div class="col-xl-3 col-md-4 invalid-feedback"
+                                            *ngIf="submitted  && f.sizeId.errors">
+                                            <div class="text-danger" *ngIf="f.sizeId.errors.required">
+                                                {{validationMessages.sizeId}}
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label for="validationCustom0"
+                                            class="col-xl-3 col-md-4"><span>*</span>Category</label>
+                                        <select class="form-control col-xl-8 col-md-7" formControlName="categoryId"
+                                            [ngClass]="{'is-invalid' : submitted  && f.categoryId.errors }">
+                                            <option value="">--Select--</option>
+                                            <option *ngFor="let category of objCategories" [value]="category.id">
+                                                {{category.name}}</option>
+                                        </select>
+                                        <div class="col-xl-3 col-md-4"></div>
+                                        <div class="col-xl-3 col-md-4 invalid-feedback"
+                                            *ngIf="submitted  && f.categoryId.errors">
+                                            <div class="text-danger" *ngIf="f.categoryId.errors.required">
+                                                {{validationMessages.categoryId}}
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label for="validationCustom0"
+                                            class="col-xl-3 col-md-4"><span>*</span>Tag</label>
+                                        <select class="form-control col-xl-8 col-md-7" formControlName="tagId"
+                                            [ngClass]="{'is-invalid' : submitted  && f.tagId.errors }">
+                                            <option value="">--Select--</option>
+                                            <option *ngFor="let tag of objTags" [value]="tag.id">
+                                                {{tag.name}}</option>
+                                        </select>
+                                        <div class="col-xl-3 col-md-4"></div>
+                                        <div class="col-xl-3 col-md-4 invalid-feedback"
+                                            *ngIf="submitted  && f.tagId.errors">
+                                            <div class="text-danger" *ngIf="f.tagId.errors.required">
+                                                {{validationMessages.tagId}}
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label for="validationCustom0"
+                                            class="col-xl-3 col-md-4"><span>*</span>Color</label>
+                                        <select class="form-control col-xl-8 col-md-7" formControlName="colorId"
+                                            [ngClass]="{'is-invalid' : submitted  && f.colorId.errors }">
+                                            <option value="">--Select--</option>
+                                            <option *ngFor="let color of objColors" [value]="color.id">
+                                                {{color.name}}</option>
+                                        </select>
+                                        <div class="col-xl-3 col-md-4"></div>
+                                        <div class="col-xl-3 col-md-4 invalid-feedback"
+                                            *ngIf="submitted  && f.colorId.errors">
+                                            <div class="text-danger" *ngIf="f.colorId.errors.required">
+                                                {{validationMessages.colorId}}
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label for="validationCustom0" class="col-xl-3 colmd4"><span>*</span>Total
+                                            Products :
+                                        </label>
+                                        <div class="qty-box1">
+                                            <div class="input-group">
+                                                <i class="fa fa-minus btnGtr1" (click)="decrement()"></i>
+                                                <input type="text" class="touchspin1 text-center"
+                                                    formControlName="quantity" readonly />
+                                                <i class="fa fa-plus btnLess1" (click)="increment()"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="validationCustom0" class="col-xl-3 colmd4"><span>*</span>IsSale
+                                            :</label>
+                                        <div class="checkbox checkbox-primary col-xl-8 col-md-7">
+                                            <input id="checkbox-primary-2" type="checkbox" formControlName="isSale" />
+                                            <label for="checkbox-primary-2">Select for mark this product for
+                                                Sale</label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="validationCustom0" class="col-xl-3 colmd4"><span>*</span>IsNew
+                                            :</label>
+                                        <div class="checkbox checkbox-primary col-xl-8 col-md-7">
+                                            <input id="checkbox-primary-3" type="checkbox" formControlName="isNew" />
+                                            <label for="checkbox-primary-3">Select for mark this product for
+                                                New</label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="validationCustom0" class="col-xl-3 col-md4"><span>*</span>Short
+                                            Details</label>
+                                        <textarea rows="5" cols="12" class="form-control col-xl-8 col-md-7"
+                                            formControlName="shortDetails"></textarea>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="validationCustom0"
+                                            class="col-xl-3 col-md4"><span>*</span>Description
+                                        </label>
+                                        <ck-editor name="editor1" language="en" [fullPage]="false"
+                                            formControlName="description">
+                                        </ck-editor>
+                                    </div>
+
+                                </div>
+                                <div class="form-group row mb-0">
+                                    <div class="product-buttons col-sm-8 offset-xl-3 offset-sm-4">
+                                        <button type="submit" class="btn btn-primary mr-1">{{buttonText}}</button>
+                                        <button type="button" class="btn btn-light" (click)="cancel()">Discard</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
